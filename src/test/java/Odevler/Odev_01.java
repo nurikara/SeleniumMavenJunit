@@ -13,7 +13,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.time.Duration;
 import java.util.List;
 
-public class odev01 {
+public class Odev_01 {
     //
 //    *** Aşağıdaki Task'i Junit framework'u ile yapınız
 //- ebay sayfasına gidiniz

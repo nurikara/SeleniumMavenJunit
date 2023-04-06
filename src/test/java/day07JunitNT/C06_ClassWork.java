@@ -13,7 +13,7 @@ public class C06_ClassWork {
     @BeforeClass
     public static void beforeClass() throws Exception {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver(new ChromeOptions().addArguments("--remote-allow-origins=*"));
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 

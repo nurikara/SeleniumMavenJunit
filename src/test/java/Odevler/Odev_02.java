@@ -6,12 +6,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
 import java.util.List;
 
-public class C02 {
+public class Odev_02 {
 
 
     //        *** Aşağıdaki Task'i Junit framework'u ile yapınız
@@ -22,11 +21,11 @@ public class C02 {
 //        - 90 defa basıldığını doğrulayınız
 //                - Sayfayı kapatınız
 
-    static WebDriver driver;
+    public static WebDriver driver;
     @BeforeClass
     public static void setUp() throws Exception {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver(new ChromeOptions().addArguments("--remote-allow-origins=*"));
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.get("http://the-internet.herokuapp.com/add_remove_elements/");
@@ -35,7 +34,7 @@ public class C02 {
     @AfterClass
     public static void tearDown() throws Exception {
 
-        driver.close();
+//        driver.close();
     }
 
 
@@ -58,7 +57,23 @@ public class C02 {
 
             delete.get(i).click();
 
-        }}}
+        }}
+
+    @Test
+    public void test03() {
+
+        List<WebElement> delete = driver.findElements(By.xpath("//button[@class='added-manually']"));
+
+     delete.size();
+
+      if(delete.size()==10){
+
+          System.out.println("Test PASSED");
+      } else System.out.println("test FAILED");
+
+
+    }
+}
 
 
 
