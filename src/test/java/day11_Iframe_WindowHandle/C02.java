@@ -35,6 +35,7 @@ public class C02 extends TestBase {
         wait(2);
 
         List<String> windowList = new ArrayList<>(driver.getWindowHandles());
+        System.out.println("windowList = " + windowList);
 
 
         //techproeducation sayfasına geçiniz:

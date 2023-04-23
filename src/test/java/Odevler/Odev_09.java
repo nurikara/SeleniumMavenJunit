@@ -88,11 +88,9 @@ public class Odev_09 extends TestBase {
 
      Assert.assertTrue(background.isDisplayed());
 
+     wait(3);
 
-        wait(3);
-
-
-       driver.close();
+     driver.close();
     }
 }
 
@@ -101,7 +99,6 @@ public class Odev_09 extends TestBase {
 
 
 
-//        -Kutucuk içindeki rengi önce kırmızı sonra sarı yapınız
 
 
 
