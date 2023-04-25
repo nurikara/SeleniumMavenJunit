@@ -32,16 +32,18 @@ public class Odev_11task extends TestBase {
         //İndirmiş olduğumuz dosyayı silelim
         //Silindiğini doğrulayalım
         //Not: Bu task'in her adımı için Html rapor oluşturalım(Extent Report)
+//        extentTest=extentReports.createTest("ExtentTest","Test Raporu");
 
-        extentTest = extentReports.createTest("ExtentTest", "Test Raporu");
-        ExtentTest test = extentReports.createTest("Nuri", "task10");
+//        extentTest = extentReports.createTest("ExtentTest", "Test Raporu");
+    //    ExtentTest test = extentReports.createTest("Nuri", "task10");
         //https://www.selenium.dev/downloads/ adresine gidelim
         driver.get("https://www.selenium.dev/downloads");
+        extentTest.info("Belirtilen adrese gidildi");
         //Sayfanın resmini alalım
 
         String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
         String dosyaYolu = "TestOutput/screenshot" + tarih + ".png";
-
+        extentTest.info("Sayfanin resmi alindi");
         TakesScreenshot ts = (TakesScreenshot) driver;
         FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE), new File(dosyaYolu));
 
@@ -49,12 +51,12 @@ public class Odev_11task extends TestBase {
         //Platforms Supported by Selenium altındaki Browsers bölümü görünene kadar sayfayı indirelim
         Actions action = new Actions(driver);
         action.scrollToElement(driver.findElement(By.xpath("//h2[@class='card-title pb-4']"))).perform();
-
+        extentTest.info("Browsers bölümü görünene kadar sayfayı indirelim");
         //Browser bölümünden Chrome driver bölümündeki documentation linkine tıklıyalım
 
         WebElement browser = driver.findElement(By.xpath("//button[@class='btn btn-dark btn-lg btn-block rounded-0 text-left']"));
         browser.click();
-
+        extentTest.info("Browser bölümünden Chrome driver bölümündeki documentation linkine tıklıyalım");
         driver.findElement(By.xpath("//a[@href='https://chromedriver.chromium.org/']")).click();
 
         //Documentation webelementinin resmini alalım
@@ -67,26 +69,31 @@ public class Odev_11task extends TestBase {
         String homeWH = driver.getWindowHandle();
         System.out.println("homeWH = " + homeWH);
 
+        extentTest.info("Documentation webelementinin resmini alalım");
 
         //All versions available in Downloads altında Latest stable release olan linki tıklayalım
         driver.findElement(By.xpath("(//span[@class='C9DxTc aw5Odc '])[2]")).click();
         wait(3);
-
+        extentTest.info("All versions available in Downloads altında Latest stable release olan linki tıklayalım");
         //Açılan pencerede chromedriver'i indirelim
+        extentTest.info("Açılan pencerede chromedriver'i indirelim");
 
         Set<String> tumPencereler = driver.getWindowHandles();
+        System.out.println("tumPencereler = " + tumPencereler);
 
         for (String w : tumPencereler) {
             if (!w.equals(homeWH)) {
 
                 driver.switchTo().window(w);
+                System.out.println("driver.getWindowHandle() = " + driver.getWindowHandle());
+
+                WebElement satir3 = driver.findElement(By.xpath("//a[@href='/112.0.5615.49/chromedriver_win32.zip']"));
+                satir3.click();
+
             }
         }
 
-        WebElement satir3 = driver.findElement(By.xpath("(//tbody)[1]//tr[3]"));
-        System.out.println("3. Satir Bilgileri");
-        System.out.println(Arrays.toString(satir3.getText().split(" ")));
-        System.out.println(satir3.getText());
+
 
 
 //        WebElement download = driver.findElement(By.xpath("//*[@href='/112.0.5615.49/chromedriver_win32.zip']"));

@@ -38,7 +38,7 @@ public class TestBase {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
-        //----------------------------------------------------------------------------
+
         extentReports = new ExtentReports();
         String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
         String dosyaYolu = "TestOutput/reports/extentReport_"+tarih+".html";
@@ -68,6 +68,23 @@ public class TestBase {
             throw new RuntimeException(e);
         }
     }
+    //Click Method
+    public void click(WebElement element){
+        try {
+            element.click();
+        } catch (Exception e) {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].click();",element);
+        }
+    }
+
+    //JS Scroll
+    public void scroll(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);",element);
+    }
+
+
 
     //Alert accept
     public static void alertAccept() {
