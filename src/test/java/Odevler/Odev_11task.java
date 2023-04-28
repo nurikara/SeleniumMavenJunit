@@ -35,7 +35,7 @@ public class Odev_11task extends TestBase {
 //        extentTest=extentReports.createTest("ExtentTest","Test Raporu");
 
 //        extentTest = extentReports.createTest("ExtentTest", "Test Raporu");
-    //    ExtentTest test = extentReports.createTest("Nuri", "task10");
+        //    ExtentTest test = extentReports.createTest("Nuri", "task10");
         //https://www.selenium.dev/downloads/ adresine gidelim
         driver.get("https://www.selenium.dev/downloads");
         extentTest.info("Belirtilen adrese gidildi");
@@ -60,7 +60,7 @@ public class Odev_11task extends TestBase {
         driver.findElement(By.xpath("//a[@href='https://chromedriver.chromium.org/']")).click();
 
         //Documentation webelementinin resmini alalım
-
+        wait(2);
 
         WebElement Wb = driver.findElement(By.xpath("//span[text()='ChromeDriver Documentation']"));
 
@@ -70,7 +70,7 @@ public class Odev_11task extends TestBase {
         System.out.println("homeWH = " + homeWH);
 
         extentTest.info("Documentation webelementinin resmini alalım");
-
+        wait(2);
         //All versions available in Downloads altında Latest stable release olan linki tıklayalım
         driver.findElement(By.xpath("(//span[@class='C9DxTc aw5Odc '])[2]")).click();
         wait(3);
@@ -80,20 +80,19 @@ public class Odev_11task extends TestBase {
 
         Set<String> tumPencereler = driver.getWindowHandles();
         System.out.println("tumPencereler = " + tumPencereler);
-
+        wait(2);
         for (String w : tumPencereler) {
             if (!w.equals(homeWH)) {
 
                 driver.switchTo().window(w);
                 System.out.println("driver.getWindowHandle() = " + driver.getWindowHandle());
 
-                WebElement satir3 = driver.findElement(By.xpath("//a[@href='/112.0.5615.49/chromedriver_win32.zip']"));
-                satir3.click();
+
+                driver.findElement(By.xpath("//*[text()='chromedriver_win32.zip']")).click();
+
 
             }
         }
-
-
 
 
 //        WebElement download = driver.findElement(By.xpath("//*[@href='/112.0.5615.49/chromedriver_win32.zip']"));

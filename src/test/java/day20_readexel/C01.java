@@ -72,7 +72,5 @@ Kullanılan satır sayısın bulun
 
             ulkelerVeBaskentleri.put(ulkeAdi, baskentAdi);
 
-
-
-    }
+        }
 }}
